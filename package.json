@@ -1,0 +1,25 @@
+{
+  "name": "angular-host-css-variable",
+  "version": "0.0.0",
+  "description": "Angular Host CSS Variable Schematics",
+  "scripts": {
+    "build": "tsc -p tsconfig.json && sh post-build.sh",
+    "test": "npm run build && jasmine src/**/*_spec.js"
+  },
+  "keywords": [
+    "schematics"
+  ],
+  "author": "Nozomu Miyamoto",
+  "license": "MIT",
+  "schematics": "./dist/collection.json",
+  "dependencies": {
+    "@angular-devkit/core": "^9.1.7",
+    "@angular-devkit/schematics": "^9.1.7",
+    "typescript": "~3.8.2"
+  },
+  "devDependencies": {
+    "@types/node": "^12.11.1",
+    "@types/jasmine": "~3.5.0",
+    "jasmine": "^3.5.0"
+  }
+}
