@@ -1,10 +1,12 @@
 import { Rule, SchematicContext, Tree } from '@angular-devkit/schematics';
 import { NodePackageInstallTask, RunSchematicTask } from '@angular-devkit/schematics/tasks';
 import {
-	addPackageToPackageJson
+	addPackageToPackageJson,
+	addStyleIncludePathToAngularJson
 } from '../utils';
+import { Schema } from './schema';
 
-export function angularHostCssVariable(options: any): Rule {
+export function index(options: Schema): Rule {
 	return (host: Tree, context: SchematicContext) => {
 		addPackageToPackageJson(
 			host,
@@ -18,6 +20,21 @@ export function angularHostCssVariable(options: any): Rule {
 			'angular-host-css-variable',
 			'latest',
 			'devDependencies'
+		);
+
+		addPackageToPackageJson(
+			host,
+			'angular-custom-webpack-chaining',
+			'latest',
+			'devDependencies'
+		);
+
+		context.addTask(new NodePackageInstallTask());
+
+	addStyleIncludePathToAngularJson(
+			host,
+			options.project,
+			'node_modules/host-css-variable'
 		);
 
 		context.addTask(new RunSchematicTask(

@@ -17,7 +17,12 @@ function sortObjectByKeys(obj: object) {
 }
 
 /** Adds a package to the package.json in the given host tree. */
-export function addPackageToPackageJson(host: Tree, pkg: string, version: string, dependencies: string = 'dependencies'): Tree {
+export function addPackageToPackageJson(
+	host: Tree, 
+	pkg: string, 
+	version: string, 
+	dependencies: string = 'dependencies'
+): Tree {
 
   if (host.exists('package.json')) {
     const sourceText = host.read('package.json')!.toString('utf-8');

@@ -11,7 +11,8 @@
   ],
   "author": "Nozomu Miyamoto",
   "license": "MIT",
-  "schematics": "./dist/collection.json",
+	"main": "./dist/index.js",
+  "schematics": "./dist/schematics/collection.json",
   "dependencies": {
     "@angular-devkit/core": "^9.1.7",
     "@angular-devkit/schematics": "^9.1.7",

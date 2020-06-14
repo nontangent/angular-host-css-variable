@@ -3,7 +3,8 @@
   "schematics": {
 		"ng-add": {
 			"description": "Add Host CSS Variable",
-			"factory": "./ng-add/index.ts#index"
+			"factory": "./ng-add/index#index",
+			"schema": "./ng-add/schema.json"
 		}
   }
 }
