@@ -11,11 +11,12 @@
   ],
   "author": "Nozomu Miyamoto",
   "license": "MIT",
-	"main": "./dist/index.js",
+  "main": "./dist/index.js",
   "schematics": "./dist/schematics/collection.json",
   "dependencies": {
-    "@angular-devkit/core": "^9.1.7",
-    "@angular-devkit/schematics": "^9.1.7",
+    "@angular-devkit/core": "9.1.8",
+    "@angular-devkit/schematics": "9.1.8",
+    "@schematics/angular": "9.1.8",
     "typescript": "~3.8.2"
   },
   "devDependencies": {
