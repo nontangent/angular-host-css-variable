@@ -3,7 +3,8 @@ import { Rule, SchematicContext, externalSchematic, Tree, chain, noop } from '@a
 import { NodePackageInstallTask, RunSchematicTask } from '@angular-devkit/schematics/tasks';
 import {
 	addPackageToPackageJson,
-	addStyleIncludePathToAngularJson
+	addStyleIncludePathToAngularJson,
+	saveFile
 } from '../utils';
 /* import { Schema } from './schema'; */
 import buildComponent from '@schematics/angular/component';
@@ -56,22 +57,6 @@ export function addHostCssVariable(options: any): Rule {
 	}
 }
 
-export function saveFile(
-	host: Tree, 
-	path: string, 
-	callback: any
-): Tree {
-	
-	if (host.exists(path)) {
-		const src = host.read(path)!.toString('utf-8');
-		const dest = callback(src);
-		host.overwrite(path, dest);
-	} else {
-		host.create(path, callback(''));
-	}
-
-	return host;
-}
 
 export default function(options: any): Rule {
 	return (host: Tree, context: SchematicContext) => {

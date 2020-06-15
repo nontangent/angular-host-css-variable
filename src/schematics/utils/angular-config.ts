@@ -60,3 +60,20 @@ export function updateAngularJson(host: Tree, callback: any) {
 	}
 	return host;
 }
+
+export function saveFile(
+	host: Tree, 
+	path: string, 
+	callback: any
+): Tree {
+	
+	if (host.exists(path)) {
+		const src = host.read(path)!.toString('utf-8');
+		const dest = callback(src);
+		host.overwrite(path, dest);
+	} else {
+		host.create(path, callback(''));
+	}
+
+	return host;
+}
