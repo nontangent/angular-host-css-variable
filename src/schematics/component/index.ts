@@ -14,6 +14,7 @@ import { applyLintFix } from '@schematics/angular/utility/lint-fix';
 import { parseName } from '@schematics/angular/utility/parse-name';
 import { validateHtmlSelector, validateName } from '@schematics/angular/utility/validation';
 import { buildDefaultPath, getWorkspace } from '@schematics/angular/utility/workspace';
+import format from 'string-template';
 
 function buildSelector(options: any, projectPrefix: string) {
   let selector = strings.dasherize(options.name);
@@ -43,14 +44,20 @@ export function addHostCssVariable(options: any): Rule {
     validateName(options.name);
     validateHtmlSelector(options.selector);
 
-		const stylePath = join(options.path, options.name, options.name + '.component.scss');
+		const stylePath = join(
+			options.path, 
+			strings.dasherize(options.name), 
+			`${strings.dasherize(options.name)}.${options.type}.${options.style}`
+		);
+
+		const HEADER = format(options.styleHeader, {
+			name: strings.dasherize(options.name)
+		});
 
 		return chain([
-			(tree) => {
+			(host: Tree) => {
 				return saveFile(host, stylePath, (src: string): string => {
-					return `@import 'host-variable';\n` + 
-					`$host: host('${options.name}');\n` +
-					`${src}`
+					return HEADER + `${src}`
 				});
 			}
 		]);
@@ -60,13 +67,9 @@ export function addHostCssVariable(options: any): Rule {
 
 export default function(options: any): Rule {
 	return (host: Tree, context: SchematicContext) => {
-		const lintFix: boolean = options.lintFix;
-		options.lintfix = false;
 		return chain([
-			externalSchematic('@schematics/angular', 'component', options),
-			/* buildComponent({...options}), */
+			externalSchematic('@schematics/angular', 'component', {...options}),
 			addHostCssVariable({...options}),
-			lintFix ? applyLintFix(options.path) : noop(),
 		]);
   };
 }

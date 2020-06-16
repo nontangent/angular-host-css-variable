@@ -17,6 +17,7 @@
     "@angular-devkit/core": "9.1.8",
     "@angular-devkit/schematics": "9.1.8",
     "@schematics/angular": "9.1.8",
+    "string-template": "^1.0.0",
     "typescript": "~3.8.2"
   },
   "devDependencies": {
