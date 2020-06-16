@@ -14,7 +14,7 @@ import { applyLintFix } from '@schematics/angular/utility/lint-fix';
 import { parseName } from '@schematics/angular/utility/parse-name';
 import { validateHtmlSelector, validateName } from '@schematics/angular/utility/validation';
 import { buildDefaultPath, getWorkspace } from '@schematics/angular/utility/workspace';
-import { format } from 'string-template';
+import * as format from 'string-template';
 
 function buildSelector(options: any, projectPrefix: string) {
   let selector = strings.dasherize(options.name);
