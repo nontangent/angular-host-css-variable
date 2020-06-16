@@ -9,12 +9,12 @@ import { Schema } from './schema';
 
 export function index(options: Schema): Rule {
 	return (host: Tree, context: SchematicContext) => {
-		addPackageToPackageJson(
-			host,
-			'host-css-variable',
-			'latest',
-			'devDependencies'
-		);
+		/* addPackageToPackageJson( */
+		/* 	host, */
+		/* 	'host-css-variable', */
+		/* 	'latest', */
+		/* 	'devDependencies' */
+		/* ); */
 
 		addPackageToPackageJson(
 			host,
@@ -23,12 +23,12 @@ export function index(options: Schema): Rule {
 			'devDependencies'
 		);
 
-		addPackageToPackageJson(
-			host,
-			'angular-custom-webpack-chaining',
-			'latest',
-			'devDependencies'
-		);
+		/* addPackageToPackageJson( */
+		/* 	host, */
+		/* 	'angular-custom-webpack-chaining', */
+		/* 	'latest', */
+		/* 	'devDependencies' */
+		/* ); */
 
 		context.addTask(new NodePackageInstallTask());
 
