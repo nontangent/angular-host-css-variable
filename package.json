@@ -1,6 +1,6 @@
 {
   "name": "angular-host-css-variable",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Angular Host CSS Variable Schematics",
   "scripts": {
     "build": "tsc -p tsconfig.json && sh post-build.sh",
