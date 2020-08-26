@@ -5,7 +5,7 @@
   "type": "object",
   "description": "Creates a new generic component definition in the given or default project.",
   "properties": {
-    "path": {
+		"path": {
       "type": "string",
       "format": "path",
       "description": "The path at which to create the component file, relative to the current workspace. Default is a folder with the same name as the component in the project root.",
@@ -32,13 +32,6 @@
       "type": "boolean",
       "default": false,
       "alias": "b"
-    },
-    "inlineStyle": {
-      "description": "When true, includes styles inline in the component.ts file. Only CSS styles can be included inline. By default, an external styles file is created and referenced in the component.ts file.",
-      "type": "boolean",
-      "default": false,
-      "alias": "s",
-      "x-user-analytics": 9
     },
     "inlineTemplate": {
       "description": "When true, includes template inline in the component.ts file. By default, an external template file is created and referenced in the component.ts file.",
@@ -85,7 +78,7 @@
       ],
       "x-user-analytics": 5
     },
-    "type": {
+		"type": {
       "type": "string",
       "description": "Adds a developer-defined type to the filename, in the format \"name.type.ts\".",
       "default": "Component"
