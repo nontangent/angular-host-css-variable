@@ -1,9 +1,11 @@
 {
   "name": "angular-host-css-variable",
-  "version": "0.2.0",
+  "version": "0.1000.0",
   "description": "Angular Host CSS Variable Schematics",
   "scripts": {
-    "build": "tsc -p tsconfig.json && sh post-build.sh",
+    "build": "tsc -p tsconfig.json",
+    "build:watch": "tsc -p tsconfig.json --watch",
+    "postbuild": "sh post-build.sh",
     "test": "npm run build && jasmine src/**/*_spec.js"
   },
   "keywords": [
@@ -14,16 +16,16 @@
   "main": "./dist/index.js",
   "schematics": "./dist/schematics/collection.json",
   "dependencies": {
-    "@angular-devkit/core": "9.1.8",
-    "@angular-devkit/schematics": "^9.1.8",
-    "@schematics/angular": "9.1.8",
+    "@angular-devkit/core": "~10.0.0",
+    "@angular-devkit/schematics": "~10.0.0",
+    "@schematics/angular": "~10.0.0",
     "host-css-variable": "^1.1.0",
-    "string-template": "^1.0.0",
-    "typescript": "~3.8.2"
+    "string-template": "^1.0.0"
   },
   "devDependencies": {
     "@types/node": "^12.11.1",
     "@types/jasmine": "~3.5.0",
-    "jasmine": "^3.5.0"
+    "jasmine": "^3.5.0",
+    "typescript": "~3.8.2"
   }
 }

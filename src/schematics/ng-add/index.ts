@@ -3,24 +3,31 @@ import { NodePackageInstallTask, RunSchematicTask } from '@angular-devkit/schema
 import {
 	addPackageToPackageJson,
 	addStyleIncludePathToAngularJson,
-	setDefaultCollectionToAngularJson
+	setDefaultCollectionToAngularJson,
+	getPackageVersionFromPackageJson
 } from '../utils';
 import { Schema } from './schema';
 
 export function index(options: Schema): Rule {
 	return (host: Tree, context: SchematicContext) => {
+		const ngCoreVersionTag = getPackageVersionFromPackageJson(host, '@angular/core');
+		const angularDependencyVersion = ngCoreVersionTag || `0.0.0-NG`;
+	
+		if (angularDependencyVersion === '0.0.0-NG') {
+		  throw new Error('@angular/core version is not supported.');
+		}	
 
 		addPackageToPackageJson(
 			host,
 			'angular-host-css-variable',
-			'latest',
+			getCustomWebpackVersion(angularDependencyVersion),
 			'devDependencies'
 		);
 
 		addPackageToPackageJson(
 			host,
 			'angular-custom-webpack-chaining',
-			'latest',
+			getCustomWebpackVersion(angularDependencyVersion),
 			'devDependencies'
 		);
 
@@ -54,4 +61,13 @@ export function index(options: Schema): Rule {
 
     return host;
   };
+}
+
+export function getCustomWebpackVersion(ver: string): string {
+	const [major, minor, patch] = (ver.replace(/(\^|\~)/, '')).split('.');
+	switch (major) {
+	  case '10': return '^0.1000.0';
+	  case '11': return '^0.1100.0';
+	  default: throw new Error('@angular/core version is not supported.');
+	}
 }
