@@ -13,7 +13,7 @@
   ],
   "author": "Nozomu Miyamoto",
   "license": "MIT",
-  "main": "./dist/index.js",
+  "main": "./dist/custom-webpack.js",
   "schematics": "./dist/schematics/collection.json",
   "dependencies": {
     "@angular-devkit/core": "~11.0.0",
