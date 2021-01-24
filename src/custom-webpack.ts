@@ -3,11 +3,8 @@ export default function (config, ..._: any[]) {
 		if (rule.test.toString() == /\.scss$|\.sass$/.toString()) {
 			rule.use = [...rule.use, 'host-css-variable'];
 		}
-
 		return rule;
 	})
-
-	/* console.log('rules:', config.module.rules); */
 
 	return config;
 }
