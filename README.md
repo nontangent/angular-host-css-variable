@@ -12,7 +12,7 @@ Angular 11++
 $ ng add angular-host-css-variable
 ```
 
-## Example
+## Usage Example
 1. Create components
 
 ```shell
@@ -34,13 +34,95 @@ UPDATE src/app/app.module.ts (496 bytes)
 
 ```
 
-2. 
+App Component => Parent Component => Child Component
+
+
+2. Edit each component scss 
+
+`child.component.scss`
+
+```child.component.scss
+@import "~host-css-variable/host-variable";
+$host: host("child");
+
+:host {
+  @include hvar(--width, 100%);
+  @include hvar(--height, 100%);
+  @include hvar(--side-padding, 8px);
+}
+
+:host {
+  display: block;
+  width: calc(hvar(--width) - hvar(--side-padding) * 2);
+  height: hvar(--height);
+  padding: 0 hvar(--side-padding);
+
+  outline: skyblue solid 1px;
+
+  div {
+    width: calc(hvar(--width) - hvar(--side-padding) * 2);
+    height: calc(hvar(--height) - 32px);
+    outline: skyblue solid 1px;
+  }
+}
+
+```
+
 
 `parent.component.scss`
 
 ```parent.component.scss
+@import "~host-css-variable/host-variable";
+$host: host("parent");
+
 :host {
-  
+  @include hvar(--width, 100%);
+  @include hvar(--height, 100vh);
+  @include hvar(--side-padding, 16px);
+}
+
+:host {
+  display: block;
+  width: calc(hvar(--width) - hvar(--side-padding) * 2);
+  height: hvar(--height);
+  padding: 0 hvar(--side-padding);
+  outline: skyblue solid 1px;
+
+  app-child {
+    --width: calc(hvar(--width) - hvar(--side-padding) * 2);
+    --height: calc(hvar(--height) - 32px);
+    --side-padding: 16px;
+  }
 }
 ```
 
+`app.component.scss`
+
+```app.component.scss
+@import "~host-css-variable/host-variable";
+$host: host("app");
+
+:host {
+  @include hvar(--width, 100vw);
+  @include hvar(--height, 100vh);
+}
+
+:host {
+  display: block;
+  width: hvar(--width);
+  outline: skyblue solid 1px;
+
+  app-parent {
+    --width: hvar(--width);
+    --height: calc(hvar(--height) - 32px);
+    --side-padding: 32px;
+  }
+}
+```
+
+In this case, each component's --side-padding is following.
+
+|  components  |  --side-width(overrited) | --side-width(default) |
+|  :----       |  ----:                   |  ----:                |
+|  parent      | 32px                     | 16px                  |
+|  child       |  16px                    | 8px                   |
