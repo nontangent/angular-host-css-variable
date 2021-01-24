@@ -2,7 +2,7 @@
 This package enable to use host-scoped css variable by `hvar(--name)` in Angular.
 
 ## DEMO
-[Stackblitz](https://stackblitz.com/edit/angular-host-css-variable-demo?file=src/app/app.component.scss)
+[Stackblitz Demo](https://stackblitz.com/edit/angular-host-css-variable-demo?file=src/app/app.component.scss)
 
 ## Support
 Angular 11++
@@ -126,3 +126,6 @@ In this case, each component's --side-padding is following.
 |  :----       |  ----:                   |  ----:                |
 |  parent      | 32px                     | 16px                  |
 |  child       |  16px                    | 8px                   |
+
+
+If you want to know more detail, access to [Stackblitz Demo](https://stackblitz.com/edit/angular-host-css-variable-demo?file=src/app/app.component.scss).
