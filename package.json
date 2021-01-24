@@ -11,6 +11,10 @@
   "keywords": [
     "schematics"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com:nontangent/angular-host-css-variable.git"
+  },
   "author": "Nozomu Miyamoto",
   "license": "MIT",
   "main": "./dist/custom-webpack.js",
