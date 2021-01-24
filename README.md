@@ -1,6 +1,9 @@
 # Angular Host CSS Variable
 This package enable to use host-scoped css variable by `hvar(--name)` in Angular.
 
+## DEMO
+[Stackblitz](https://stackblitz.com/edit/angular-host-css-variable-demo?file=src/app/app.component.scss)
+
 ## Support
 Angular 11++
 
